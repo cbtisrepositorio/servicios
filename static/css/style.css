@@ -1,0 +1,16 @@
+
+:root{
+  --primary:#0d6efd;
+  --accent:#ff6ea5;
+  --bg:#f6f8fc;
+  --card:#ffffff;
+}
+body{ background:var(--bg); }
+.bg-gradient-primary{ background: linear-gradient(90deg, var(--primary), #36a2ff); }
+.btn-accent{ background:var(--accent); color:#fff; border:none; }
+.btn-accent:hover{ filter:brightness(0.95); color:#fff; }
+.page-title{ color:#333; font-weight:700; }
+.grid-cards{ display:grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap:1rem; }
+.card-neo{ background:var(--card); border:none; border-radius:16px; box-shadow:0 10px 20px rgba(0,0,0,.06); }
+.bg-tag{ background:#e7f1ff; color:#0b5ed7; }
+.footer{ background:#fff; border-top:1px solid #eee; }

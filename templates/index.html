@@ -1,0 +1,34 @@
+
+{% extends "base.html" %}
+{% block title %}Listado de Solicitudes{% endblock %}
+{% block content %}
+<div class="banner mb-4 text-center">
+  <img src="{{ url_for('static', filename='img/banner.png') }}" class="img-fluid rounded shadow-sm" alt="Servicios Escolares">
+</div>
+<div class="d-flex align-items-center justify-content-between mb-3">
+  <h2 class="page-title">📋 Solicitudes</h2>
+  <a class="btn btn-accent" href="{{ url_for('create') }}">+ Nueva Solicitud</a>
+</div>
+
+<div class="grid-cards">
+  {% for d in datos %}
+  <div class="card card-neo">
+    <div class="card-body">
+      <span class="badge bg-tag">{{ d.estado }}</span>
+      <h5 class="card-title mt-2">{{ d.tipo }}</h5>
+      <p class="text-muted mb-1"><strong>Alumno:</strong> {{ d.alumno }}</p>
+      <p class="card-text">{{ d.descripcion }}</p>
+      <div class="d-flex gap-2">
+        <a class="btn btn-outline-primary btn-sm" href="{{ url_for('view', id=d._id) }}">Ver</a>
+        <a class="btn btn-outline-warning btn-sm" href="{{ url_for('edit', id=d._id) }}">Editar</a>
+        <form action="{{ url_for('delete', id=d._id) }}" method="POST" onsubmit="return confirm('¿Eliminar solicitud?');">
+          <button class="btn btn-outline-danger btn-sm">Eliminar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  {% else %}
+    <div class="alert alert-info">No hay solicitudes. Crea la primera con el botón “Nueva Solicitud”.</div>
+  {% endfor %}
+</div>
+{% endblock %}
